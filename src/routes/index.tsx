@@ -143,8 +143,10 @@ function LandingPage() {
 
       {/* HERO */}
       <section id="hero" className="relative pt-32 md:pt-44 pb-20 md:pb-32 px-5 md:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10 opacity-40"
-          style={{ backgroundImage: "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 20%, transparent), transparent 50%)" }} />
+        <img src={heroImage} alt="Премиальный салон автомобиля с перетяжкой Alcantara" width={1920} height={1080}
+          className="absolute inset-0 -z-20 w-full h-full object-cover opacity-50" />
+        <div className="absolute inset-0 -z-10"
+          style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--background) 70%, transparent) 0%, var(--background) 90%), radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 25%, transparent), transparent 55%)" }} />
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] gold-text font-semibold mb-6 animate-fade-in">
             <Sparkles size={14} /> Премиальное автоателье · Рязань
