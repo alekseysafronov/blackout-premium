@@ -304,21 +304,16 @@ function LandingPage() {
       {/* GALLERY */}
       <Section id="gallery" eyebrow="Портфолио" title="Примеры работ">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {galleryItems.map((item, i) => (
             <figure key={i} data-reveal style={{ transitionDelay: `${i * 60}ms` }}
-              className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-[color:var(--surface)] border border-border">
-              <div className="absolute inset-0"
-                style={{
-                  background: `linear-gradient(135deg, oklch(0.2 0 0) 0%, oklch(0.15 0 0) 50%, oklch(0.12 0 0) 100%)`,
-                }} />
-              <div className="absolute inset-0 opacity-20"
-                style={{ background: `radial-gradient(circle at ${20 + i * 12}% ${30 + i * 8}%, var(--gold), transparent 60%)` }} />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Car className="text-[color:var(--gold)]/30" size={64} />
-              </div>
-              <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                <div className="text-xs uppercase tracking-widest gold-text font-semibold">Пример работ #{i + 1}</div>
-                <div className="text-sm text-foreground/90 mt-1">Перетяжка салона · Алькантара</div>
+              className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-[color:var(--surface)] border border-border hover:border-[color:var(--gold)]/60 transition-all">
+              <img src={item.src} alt={item.title} width={1024} height={768} loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+              <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5 translate-y-2 group-hover:translate-y-0 transition-transform">
+                <div className="text-[10px] md:text-xs uppercase tracking-widest gold-text font-semibold">Работа #{i + 1}</div>
+                <div className="text-sm md:text-base font-display font-semibold text-foreground mt-1">{item.title}</div>
+                <div className="text-xs text-muted-foreground mt-1 hidden md:block">{item.desc}</div>
               </figcaption>
             </figure>
           ))}
