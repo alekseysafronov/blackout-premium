@@ -208,17 +208,31 @@ function LandingPage() {
         <p className="max-w-2xl text-muted-foreground mb-10 -mt-4" data-reveal>
           Работаем с европейскими и японскими производителями. Большой ассортимент в наличии и под заказ.
         </p>
-        <div className="grid md:grid-cols-2 gap-4">
-          {materials.map((m, i) => (
-            <div key={i} data-reveal style={{ transitionDelay: `${i * 60}ms` }}
-              className="flex items-center justify-between p-6 rounded-xl bg-[color:var(--surface)] border border-border hover:border-[color:var(--gold)]/40 transition-colors">
-              <div>
-                <div className="font-display font-semibold text-lg">{m.name}</div>
-                <div className="text-sm text-muted-foreground mt-1">{m.origin}</div>
+        <div className="grid lg:grid-cols-5 gap-6 items-start">
+          <div className="lg:col-span-2 lg:sticky lg:top-24" data-reveal>
+            <div className="relative rounded-2xl overflow-hidden border border-border aspect-[4/5] group">
+              <img src={materialsImage} alt="Образцы премиальной кожи и Alcantara с золотыми нитями"
+                width={1600} height={1024} loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="text-xs uppercase tracking-[0.3em] gold-text font-semibold mb-2">Качество</div>
+                <div className="font-display font-semibold text-xl">Премиальные материалы из Европы и Японии</div>
               </div>
-              <div className="text-2xl shrink-0 ml-4 opacity-80">{m.flag}</div>
             </div>
-          ))}
+          </div>
+          <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+            {materials.map((m, i) => (
+              <div key={i} data-reveal style={{ transitionDelay: `${i * 60}ms` }}
+                className="flex items-center justify-between p-6 rounded-xl bg-[color:var(--surface)] border border-border hover:border-[color:var(--gold)]/40 transition-colors">
+                <div>
+                  <div className="font-display font-semibold text-lg">{m.name}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{m.origin}</div>
+                </div>
+                <div className="text-2xl shrink-0 ml-4 opacity-80">{m.flag}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
