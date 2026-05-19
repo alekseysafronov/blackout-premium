@@ -6,6 +6,23 @@ import {
   Send, ShieldCheck, HandHeart, Menu, X, ChevronRight,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import heroImage from "@/assets/hero-interior.jpg";
+import materialsImage from "@/assets/materials.jpg";
+import work1 from "@/assets/work-1.jpg";
+import work2 from "@/assets/work-2.jpg";
+import work3 from "@/assets/work-3.jpg";
+import work4 from "@/assets/work-4.jpg";
+import work5 from "@/assets/work-5.jpg";
+import work6 from "@/assets/work-6.jpg";
+
+const galleryItems = [
+  { src: work1, title: "Сиденья · Натуральная кожа", desc: "Ромбовидная прострочка, золотая нить" },
+  { src: work2, title: "Потолок · Алькантара", desc: "Идеальное натяжение без складок" },
+  { src: work3, title: "Руль · Алькантара + кожа", desc: "Ручная прострочка" },
+  { src: work4, title: "Дверные карты", desc: "Премиальная кожа с акцентами" },
+  { src: work5, title: "Торпеда · Alcantara", desc: "Сложная работа с пластиком" },
+  { src: work6, title: "Полная перетяжка салона", desc: "Комплексное обновление интерьера" },
+];
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
