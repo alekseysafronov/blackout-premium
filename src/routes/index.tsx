@@ -6,6 +6,23 @@ import {
   Send, ShieldCheck, HandHeart, Menu, X, ChevronRight,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import heroImage from "@/assets/hero-interior.jpg";
+import materialsImage from "@/assets/materials.jpg";
+import work1 from "@/assets/work-1.jpg";
+import work2 from "@/assets/work-2.jpg";
+import work3 from "@/assets/work-3.jpg";
+import work4 from "@/assets/work-4.jpg";
+import work5 from "@/assets/work-5.jpg";
+import work6 from "@/assets/work-6.jpg";
+
+const galleryItems = [
+  { src: work1, title: "Сиденья · Натуральная кожа", desc: "Ромбовидная прострочка, золотая нить" },
+  { src: work2, title: "Потолок · Алькантара", desc: "Идеальное натяжение без складок" },
+  { src: work3, title: "Руль · Алькантара + кожа", desc: "Ручная прострочка" },
+  { src: work4, title: "Дверные карты", desc: "Премиальная кожа с акцентами" },
+  { src: work5, title: "Торпеда · Alcantara", desc: "Сложная работа с пластиком" },
+  { src: work6, title: "Полная перетяжка салона", desc: "Комплексное обновление интерьера" },
+];
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -126,8 +143,10 @@ function LandingPage() {
 
       {/* HERO */}
       <section id="hero" className="relative pt-32 md:pt-44 pb-20 md:pb-32 px-5 md:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10 opacity-40"
-          style={{ backgroundImage: "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 20%, transparent), transparent 50%)" }} />
+        <img src={heroImage} alt="Премиальный салон автомобиля с перетяжкой Alcantara" width={1920} height={1080}
+          className="absolute inset-0 -z-20 w-full h-full object-cover opacity-50" />
+        <div className="absolute inset-0 -z-10"
+          style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--background) 70%, transparent) 0%, var(--background) 90%), radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 25%, transparent), transparent 55%)" }} />
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] gold-text font-semibold mb-6 animate-fade-in">
             <Sparkles size={14} /> Премиальное автоателье · Рязань
@@ -189,17 +208,31 @@ function LandingPage() {
         <p className="max-w-2xl text-muted-foreground mb-10 -mt-4" data-reveal>
           Работаем с европейскими и японскими производителями. Большой ассортимент в наличии и под заказ.
         </p>
-        <div className="grid md:grid-cols-2 gap-4">
-          {materials.map((m, i) => (
-            <div key={i} data-reveal style={{ transitionDelay: `${i * 60}ms` }}
-              className="flex items-center justify-between p-6 rounded-xl bg-[color:var(--surface)] border border-border hover:border-[color:var(--gold)]/40 transition-colors">
-              <div>
-                <div className="font-display font-semibold text-lg">{m.name}</div>
-                <div className="text-sm text-muted-foreground mt-1">{m.origin}</div>
+        <div className="grid lg:grid-cols-5 gap-6 items-start">
+          <div className="lg:col-span-2 lg:sticky lg:top-24" data-reveal>
+            <div className="relative rounded-2xl overflow-hidden border border-border aspect-[4/5] group">
+              <img src={materialsImage} alt="Образцы премиальной кожи и Alcantara с золотыми нитями"
+                width={1600} height={1024} loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="text-xs uppercase tracking-[0.3em] gold-text font-semibold mb-2">Качество</div>
+                <div className="font-display font-semibold text-xl">Премиальные материалы из Европы и Японии</div>
               </div>
-              <div className="text-2xl shrink-0 ml-4 opacity-80">{m.flag}</div>
             </div>
-          ))}
+          </div>
+          <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+            {materials.map((m, i) => (
+              <div key={i} data-reveal style={{ transitionDelay: `${i * 60}ms` }}
+                className="flex items-center justify-between p-6 rounded-xl bg-[color:var(--surface)] border border-border hover:border-[color:var(--gold)]/40 transition-colors">
+                <div>
+                  <div className="font-display font-semibold text-lg">{m.name}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{m.origin}</div>
+                </div>
+                <div className="text-2xl shrink-0 ml-4 opacity-80">{m.flag}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -271,21 +304,16 @@ function LandingPage() {
       {/* GALLERY */}
       <Section id="gallery" eyebrow="Портфолио" title="Примеры работ">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {galleryItems.map((item, i) => (
             <figure key={i} data-reveal style={{ transitionDelay: `${i * 60}ms` }}
-              className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-[color:var(--surface)] border border-border">
-              <div className="absolute inset-0"
-                style={{
-                  background: `linear-gradient(135deg, oklch(0.2 0 0) 0%, oklch(0.15 0 0) 50%, oklch(0.12 0 0) 100%)`,
-                }} />
-              <div className="absolute inset-0 opacity-20"
-                style={{ background: `radial-gradient(circle at ${20 + i * 12}% ${30 + i * 8}%, var(--gold), transparent 60%)` }} />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Car className="text-[color:var(--gold)]/30" size={64} />
-              </div>
-              <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                <div className="text-xs uppercase tracking-widest gold-text font-semibold">Пример работ #{i + 1}</div>
-                <div className="text-sm text-foreground/90 mt-1">Перетяжка салона · Алькантара</div>
+              className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-[color:var(--surface)] border border-border hover:border-[color:var(--gold)]/60 transition-all">
+              <img src={item.src} alt={item.title} width={1024} height={768} loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+              <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5 translate-y-2 group-hover:translate-y-0 transition-transform">
+                <div className="text-[10px] md:text-xs uppercase tracking-widest gold-text font-semibold">Работа #{i + 1}</div>
+                <div className="text-sm md:text-base font-display font-semibold text-foreground mt-1">{item.title}</div>
+                <div className="text-xs text-muted-foreground mt-1 hidden md:block">{item.desc}</div>
               </figcaption>
             </figure>
           ))}
